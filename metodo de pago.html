@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metodos de Pago-GerMar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #df8207;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #edb6b6;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+    }
+    .payment-methods {
+      margin: 20px 0;
+    }
+    .payment-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .payment-method img {
+      max-width: 50px;
+      margin-right: 10px;
+    }
+    .order-summary {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    .place-order-button {
+      display: inline-block;
+      background-color: #7a358bf7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Metodos de Pago - Nike</h1>
+    </div>
+    <div class="payment-methods">
+      <div class="payment-method">
+        <img src="img/visa.jpg" alt="Visa">
+        <div>
+          <h3>Tarjeta de Credito/Debito</h3>
+          <p>Visa, Mastercard, American Express</p>
+          <button onclick="selectPaymentMethod('Tarjeta de Credito/Debito')">Usar</button>
+        </div>
+      </div>
+      <div class="payment-method">
+        <img src="img/oxxo.jpg" alt="OXXO">
+        <div>
+          <h3>OXXO</h3>
+          <p>Paga en efectivo en cualquier tienda OXXO</p>
+          <button onclick="selectPaymentMethod('OXXO')">Usar</button>
+        </div>
+      </div>
+      <div class="payment-method">
+        <img src="img/paypal.jpg" alt="PayPal">
+        <div>
+          <h3>PayPal</h3>
+          <p>Paga de forma segura con tu cuenta de PayPal</p>
+          <button onclick="selectPaymentMethod('PayPal')">Usar</button>
+        </div>
+      </div>
+    </div>
+    <div class="order-summary">
+      <h3>Resumen del Pedido</h3>
+      <p id="subtotal">Subtotal: $<span id="totalAmount"></span></p>
+      <p id="shipping">Envio: $0.00</p>
+      <p id="total">Total: $<span id="totalAmountFinal"></span></p>
+      <button class="place-order-button" id="placeOrderButton">Realizar Pedido</button>
+      <div class="botones-container">
+        <button class="place-order-button" onclick="continuarcompra()">Continuar compra</button>
+      </div>
+      
+      <script>
+        function continuarcompra() {
+            window.location.href = 'menu2.html';
+        }
+      </script>
+    </div>
+  </div>
+
+  <!-- Formulario oculto para enviar a guardar_compra.php -->
+  <form id="formCompra" action="guardar_compra.php" method="POST" style="display: none;">
+      <input type="hidden" name="producto" id="inputProducto">
+      <input type="hidden" name="talla" id="inputTalla">
+      <input type="hidden" name="color" id="inputColor">
+      <input type="hidden" name="cantidad" id="inputCantidad">
+      <input type="hidden" name="total" id="inputTotal">
+      <input type="hidden" name="metodo_pago" id="inputMetodoPago">
+      <input type="hidden" name="carrito" id="inputCarrito">
+  </form>
+
+  <script>
+    // Función para obtener parámetros de la URL
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.substring(1);
+      const regex = /([^&=]+)=([^&]*)/g;
+      let m;
+
+      while (m = regex.exec(queryString)) {
+        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+      }
+      return params;
+    }
+
+    // Obtener los parámetros de la URL
+    const params = getQueryParams();
+    const total = params.total || 0;
+    const size = params.size || 'N/A';
+    const color = params.color || 'Ninguno';
+    const quantity = params.quantity || 1; // Extraemos también la cantidad
+    const producto = params.producto || 'Producto sin nombre';
+    const carrito = params.desdeCarrito === '1'
+      ? sessionStorage.getItem('checkoutCart') || ''
+      : params.carrito || '';
+
+    // Mostrar información en la página
+    document.getElementById('totalAmount').innerText = total;
+    document.getElementById('totalAmountFinal').innerText = total;
+    document.getElementById('inputProducto').value = producto;
+    document.getElementById('inputCarrito').value = carrito;
+
+    // Variable global para guardar el método de pago elegido
+    let metodoSeleccionado = '';
+
+    // Función para seleccionar el método de pago
+    function selectPaymentMethod(method) {
+      metodoSeleccionado = method;
+      alert(`Metodo de pago seleccionado: ${method}`);
+    }
+
+    // Función modificada para realizar el pedido enviando el formulario a PHP
+    document.getElementById('placeOrderButton').onclick = function() {
+      if (metodoSeleccionado === '') {
+        alert('Por favor, selecciona un método de pago antes de continuar.');
+        return;
+      }
+      
+      // Llenamos el formulario oculto con los datos
+      document.getElementById('inputTalla').value = size;
+      document.getElementById('inputColor').value = color;
+      document.getElementById('inputCantidad').value = quantity;
+      document.getElementById('inputTotal').value = total;
+      document.getElementById('inputMetodoPago').value = metodoSeleccionado;
+
+      // Enviamos el formulario
+      document.getElementById('formCompra').submit();
+    };
+  </script>
+</body>
+</html>

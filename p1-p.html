@@ -1,0 +1,217 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Detalles del Producto - Nike</title>
+  <style>
+    body {
+      background-color: #f3883c;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      transition: background-color 0.3s; /* Transición suave para el fondo */
+    }
+
+    .product-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .product-image {
+      display: flex; 
+      justify-content: center; 
+      margin-bottom: 20px;
+    }
+
+    .product-image img {
+      max-width: 200px; 
+      height: auto; 
+      margin: 0 10px; 
+      cursor: pointer; 
+      transition: transform 0.3s; /* Transición suave para el zoom */
+    }
+
+    .product-image img:hover {
+      transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    }
+
+    .product-details {
+      background-color: #fff;
+      color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de color */
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      margin-bottom: 20px;
+    }
+
+    .product-options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-options label {
+      margin-right: 10px;
+    }
+
+    .product-options input[type="number"],
+    .product-options select {
+      width: 100px;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      margin: 0 10px;
+    }
+
+    .buy-button, .add-to-cart-button, .retired-button{
+      display: inline-block;
+      background-color: #0077b6;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .buy-button:hover, .add-to-cart-button:hover {
+      background-color: #db8a00;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <div class="product-image">
+      <img src="img/z1.avif" alt="Producto 1" 
+           onmouseover="showColor('Negro', '#333', '#fff', 'skyblue', '#000')" 
+           onmouseout="clearColor()" 
+           onclick="selectColor('Negro', '#333', '#fff')">
+      <img src="img/z12.avif" alt="Producto 2" 
+           onmouseover="showColor('Rojo', 'red', '#fff', 'pink', '#ff0000')" 
+           onmouseout="clearColor()" 
+           onclick="selectColor('Rojo', 'red', '#fff')">
+      <img src="img/z13.avif" alt="Producto 3" 
+           onmouseover="showColor('Marrón', '#8B4513', '#fff', '#808080', '#8B4513')" 
+           onmouseout="clearColor()" 
+           onclick="selectColor('Marrón', '#8B4513', '#fff')">
+    </div>
+    <div class="product-details" id="details">
+      <div class="product-name">Zapatillas Nike Air Force 1</div>
+      <div class="product-description">
+        Estas zapatillas Nike Air Force 1 son un clásico atemporal. Cuentan con una suela de goma duradera y un diseño icónico que las hace perfectas para el uso diario.
+      </div>
+      <div class="product-options">
+        <label for="size">Talla:</label>
+        <select id="size">
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+        </select>
+        <label for="quantity">Cantidad:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <h3>Precio: $2599</h3>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <label id="colorLabel" style="margin-right: 10px;">Color: Ninguno</label>
+      </div>
+      <button class="add-to-cart-button" id="addToCartButton">Añadir al Carrito</button>
+      <a href="#" class="buy-button" id="buyButton">Comprar</a>
+      <a href="calzado.html" class="retired-button" id="retired-Button">Regresar</a>
+    </div>
+  </div>
+
+  <script>
+    let selectedColor = 'Ninguno';
+    const pricePerUnit = 2599;
+
+    function showColor(color, bgColor, textColor, pageBgColor, productBgColor) {
+      document.getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("details").style.backgroundColor = productBgColor; // Cambia el color de fondo del cuadro al color del producto
+      document.getElementById("details").style.color = textColor; // Cambia el color del texto
+      document.body.style.backgroundColor = pageBgColor; // Cambia el color de fondo de la página
+    }
+
+    function clearColor() {
+      if (selectedColor === 'Ninguno') {
+        document.getElementById("colorLabel").innerText = "Color: Ninguno";
+        document.getElementById("details").style.backgroundColor = '#fff'; // Vuelve al color original del cuadro
+        document.getElementById("details").style.color = '#333'; // Vuelve al color original del texto
+        document.body.style.backgroundColor = '#f3883c'; // Vuelve al color original de la página
+      } else {
+        document.getElementById("details").style.backgroundColor = selectedBackgroundColor; // Mantiene el color seleccionado del cuadro
+        document.getElementById("details").style.color = selectedTextColor; // Mantiene el color del texto seleccionado
+      }
+    }
+
+    function selectColor(color, bgColor, textColor) {
+      selectedColor = color;
+      selectedBackgroundColor = bgColor;
+      selectedTextColor = textColor;
+      document.getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("details").style.backgroundColor = bgColor; // Mantiene el color de fondo del cuadro
+      document.getElementById("details").style.color = textColor; // Mantiene el color del texto
+    }
+
+    document.getElementById('addToCartButton').onclick = function() {
+      const quantity = document.getElementById('quantity').value;
+      const size = document.getElementById('size').value;
+      const total = quantity * pricePerUnit;
+
+      // Crear un objeto del producto
+      const product = {
+        name: "Zapatillas Nike Air Force 1",
+        size: size,
+        color: selectedColor,
+        quantity: parseInt(quantity),
+        subtotal: total
+      };
+
+      // Obtener el carrito del localStorage o inicializarlo
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product); // Añadir el producto al carrito
+
+      // Guardar el carrito actualizado en localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert("Producto añadido al carrito: " + 
+            "Nombre: Zapatillas Nike Air Force 1, " + 
+            "Talla: " + size + ", " + 
+            "Color: " + selectedColor + ", " + 
+            "Cantidad: " + quantity + ", " + 
+            "Subtotal: $" + total);
+    };
+
+    document.getElementById('buyButton').onclick = function() {
+      const nombreDelProducto = "Zapatillas Nike Air Force 1";
+      const quantity = document.getElementById('quantity').value;
+      const total = quantity * pricePerUnit;
+      const size = document.getElementById('size').value;
+      
+      // Enviamos los datos al método de pago exclusivo para calzado
+      const url = `metodo de pago.html?producto=${encodeURIComponent(nombreDelProducto)}&total=${total}&size=${size}&color=${selectedColor}&quantity=${quantity}`;
+      window.location.href = url;
+    };
+  </script>
+</body>
+</html>

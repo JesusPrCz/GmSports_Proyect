@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Productos</title>
+  <style type="text/css">
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          transition: background-color 0.3s; /* Transición suave para el cambio de fondo */
+          background-color: #fff79f; /* Color de fondo inicial */
+      }
+
+      .product-list {
+          display: grid; /* Cambiado a grid para mejor control */
+          grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+          gap: 20px;
+          padding: 20px;
+          justify-items: center; /* Centrar los elementos del grid */
+      }
+
+      .product-item {
+          width: 90%; /* Ancho del contenedor reducido */
+          max-width: 450px; /* Máximo ancho para evitar que sean demasiado anchas */
+          height: auto; /* Altura automática para que se ajuste al contenido */
+          text-align: center;
+          text-decoration: none;
+          color: #333;
+          border: 1px solid #ccc; /* Borde alrededor del producto */
+          border-radius: 5px; /* Bordes redondeados */
+          overflow: hidden; /* Para evitar que las imágenes se salgan */
+          background-color: #fff; /* Color de fondo blanco */
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+          transition: transform 0.2s; /* Transición suave al hacer hover */
+      }
+
+      .product-item:hover {
+          transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+      }
+
+      .product-item img {
+          width: 100%; /* Ancho completo del contenedor */
+          height: auto; /* Altura automática para mantener la proporción */
+          max-height: 200px; /* Altura máxima para evitar que se extiendan demasiado */
+          object-fit: contain; /* Mantiene la proporción de la imagen y se adapta al contenedor */
+      }
+
+      .calzado {
+          text-align: center;
+          font-size: 30px; /* Tamaño de fuente ajustado */
+          color: rgb(0, 0, 0);
+          margin: 20px auto; /* Centrar y reducir el margen */
+          max-width: 600px; /* Máximo ancho para el párrafo */
+      }
+
+      p {
+          font-family: Helvetica;
+          font-size: 18px; /* Tamaño de fuente ajustado */
+          font-weight: bold;
+          font-style: italic;
+          background-color: #6ceb6c;
+          border-style: solid;
+          border-color: #f58cec;
+          border-width: 5px;
+          margin: 14px auto; /* Centrar y reducir el margen */
+          padding: 10px; /* Reducir el relleno */
+          border-radius: 14px;
+          max-width: 300px; /* Máximo ancho para el párrafo */
+      }
+      .boton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+  </style>
+</head>
+<body>
+  <p class="calzado">Blusas Deportivas</p>
+  <div class="product-list">
+      <a href="articulo1.html" class="product-item">
+          <img src="img/s1.jpg" alt="Producto 1">
+          <h3>Top Deportivo</h3>
+      </a>
+      <a href="articulo2.html" class="product-item">
+          <img src="img/s3.jpg" alt="Producto 2">
+          <h3>Sujetador deportivo</h3> 
+      </a>
+      <a href="articulo3.html" class="product-item">
+          <img src="img/s5.jpg" alt="Producto 3">
+          <h3>Playera Deportiva con Manga </h3>
+      </a>
+      <a href="articulo4.html" class="product-item">
+          <img src="img/s7.jpg" alt="Producto 4">
+          <h3>Sujetador Deportivo Suelto</h3>
+      </a>
+      <a href="articulo5.html" class="product-item">
+          <img src="img/s9.jpg" alt="Producto 5">
+          <h3>Blusa Deportiva Manga Larga</h3>
+      </a>
+      <a href="articulo6.html" class="product-item">
+          <img src="img/s11.jpg" alt="Producto 6">
+          <h3>Sujetador Deportivo</h3>
+      </a>
+      <div class="botones-container">
+      <button class="boton" onclick="continuarcompra()">Regresar</button>
+    </div>    
+
+    <script>
+        function continuarcompra() {
+            window.location.href = 'menu2.html';// Aquí se l puede redirigir a otra página o realizar otra acción
+        }
+        </script>
+  </div>
+</body>
+</html>

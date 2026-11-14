@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Carrito de Compras - Nike</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #7fef5d;
+      margin: 0;
+      padding: 0;
+	    background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      font-family: Helvetica;
+      font-size: 20px;
+      font-weight: bold;
+      font-style: italic;
+      border-style: solid;
+      border-color: #f36881;
+      border-width: 8px;
+      margin: 14px;
+      padding: 20px;
+      border-radius: 14px;
+      background-color: #daff6b;
+      color: #000000;
+      padding: 10px;
+      text-align: center;
+    }
+    .cart-empty {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      text-align: center;
+    }
+    .cart-empty h2 {
+      margin-top: 0;
+    }
+    .cart-empty p {
+      margin-bottom: 20px;
+    }
+    .continue-shopping {
+      background-color: #0077b6;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .cart-items {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+    }
+    .cart-item {
+      margin-bottom: 20px;
+    }
+    .cart-item h4 {
+      margin: 0;
+    }
+    .remove-button {
+      background-color: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .cart-total {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .pay-button {
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .boton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Carrito de Compras - Nike</h1>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total" id="cartTotal"></div>
+    <div class="cart-empty" id="cartEmpty">
+      <h2>Tu carrito esta vacio</h2>
+      <p>Agrega algunos articulos para comenzar.</p>
+      <div class="botones-container">
+      <button class="boton" onclick="continuarcompra()">Continuar compra</button>
+    </div>
+    </div>
+    
+
+    <script>
+        function continuarcompra() {
+            window.location.href = 'menu2.html';// Aquí se l puede redirigir a otra página o realizar otra acción
+        }
+        </script>
+    </div>
+    <a href="#" class="pay-button" id="payButton" style="display:none;">Pagar</a>
+    
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartDisplay() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotalContainer = document.getElementById('cartTotal');
+      const cartEmptyContainer = document.getElementById('cartEmpty');
+      const payButton = document.getElementById('payButton');
+
+      cartItemsContainer.innerHTML = ''; // Limpiar contenido previo
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartEmptyContainer.style.display = 'block';
+        cartTotalContainer.innerHTML = '';
+        payButton.style.display = 'none'; // Ocultar botón de pagar si el carrito está vacío
+      } else {
+        cartEmptyContainer.style.display = 'none';
+        cart.forEach((item, index) => {
+          total += item.subtotal;
+          cartItemsContainer.innerHTML += `
+            <div class="cart-item">
+              <h4>${item.name} - Talla: ${item.size} - Color: ${item.color} - Cantidad: ${item.quantity} - Subtotal: $${item.subtotal}</h4>
+              <button class="remove-button" onclick="removeItem(${index})">Eliminar Producto</button>
+            </div>
+          `;
+        });
+        cartTotalContainer.innerHTML = `Total: $${total}`;
+        payButton.style.display = 'block'; // Mostrar botón de pagar
+      }
+    }
+
+    function removeItem(index) {
+      // Eliminar el producto del carrito
+      cart.splice(index, 1);
+      // Actualizar el carrito en localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      // Actualizar la visualización
+      updateCartDisplay();
+    }
+
+    document.getElementById('payButton').onclick = function() {
+      const total = cart.reduce((acc, item) => acc + item.subtotal, 0);
+      sessionStorage.setItem('checkoutCart', JSON.stringify(cart));
+      window.location.href = `metodo de pago.html?total=${total}&desdeCarrito=1`;
+    };
+
+    // Actualizar la visualización del carrito al cargar la página
+    updateCartDisplay();
+  </script>
+</body>
+</html>

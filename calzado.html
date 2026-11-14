@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Productos</title>
+  <style type="text/css">
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          transition: background-color 0.3s; /* Transición suave para el cambio de fondo */
+          background-color: #8ebdff; /* Color de fondo inicial */
+      }
+      .product-list {
+          display: grid; /* Cambiado a grid para mejor control */
+          grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+          gap: 20px;
+          padding: 20px;
+          justify-items: center; /* Centrar los elementos del grid */
+      }
+
+      .product-item {
+          width: 100%; /* Ancho completo de la celda */
+          height: 250px; /* Aumentar altura */
+          text-align: center;
+          text-decoration: none;
+          color: #333;
+          border: 1px solid #ccc; /* Borde alrededor del producto */
+          border-radius: 5px; /* Bordes redondeados */
+          overflow: hidden; /* Para evitar que las imágenes se salgan */
+          background-color: #fff; /* Color de fondo blanco */
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+          transition: transform 0.2s; /* Transición suave al hacer hover */
+      }
+
+      .product-item:hover {
+          transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+      }
+
+      .product-item img {
+          width: 100%;
+          height: 150px; /* Altura fija para las imágenes */
+          object-fit: cover; /* Mantiene la proporción de la imagen */
+      }
+      .calzado {
+          text-align: center;
+          font-size: 30px; /* Tamaño de fuente ajustado */
+          color: rgb(0, 0, 0);
+          margin: 20px auto; /* Centrar y reducir el margen */
+          max-width: 600px; /* Máximo ancho para el párrafo */
+      }
+       p {
+          font-family: Helvetica;
+          font-size: 18px; /* Tamaño de fuente ajustado */
+          font-weight: bold;
+          font-style: italic;
+          background-color: #6ceb6c;
+          border-style: solid;
+          border-color: #f58cec;
+          border-width: 5px;
+          margin: 14px auto; /* Centrar y reducir el margen */
+          padding: 10px; /* Reducir el relleno */
+          border-radius: 14px;
+          max-width: 300px; /* Máximo ancho para el párrafo */
+      }
+      .boton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+  </style>
+</head>
+<body>
+  <p class="calzado">Calzado</p>
+     <div class="product-list">
+      <a href="p1-p.html" class="product-item">
+          <img src="img/z1.avif" alt="Producto 1">
+          <h3>Zapatillas Nike Air Force 1</h3>
+      </a>
+      <a href="p2-p.html" class="product-item">
+          <img src="img/z21.avif" alt="Producto 2">
+          <h3>Zapatillas Nike G.T. Hustle 3</h3>
+      </a>
+      <a href="p3-p.html" class="product-item">
+          <img src="img/z31.avif" alt="Producto 3">
+          <h3>Nike Court Vision Alta</h3>
+      </a>
+      <a href="p4-p.html" class="product-item">
+          <img src="img/z41.avif" alt="Producto 4">
+          <h3>Zapatillas Nike Giannis Inmortality 4</h3>
+      </a>
+      <a href="p5-p.html" class="product-item">
+          <img src="img/z51.avif" alt="Producto 5">
+          <h3>Zapatillas Nike Air Jordan 1 Mid SE</h3>
+      </a>
+      <a href="p6-p.html" class="product-item">
+          <img src="img/z61.avif" alt="Producto 6">
+          <h3>Zapatillas Nike Jr. Phantom GX 2 Academy</h3>
+      </a>
+      <div class="botones-container">
+      <button class="boton" onclick="continuarcompra()">Regresar</button>
+    </div>    
+
+    <script>
+        function continuarcompra() {
+            window.location.href = 'menu2.html';// Aquí se l puede redirigir a otra página o realizar otra acción
+        }
+        </script>
+  </div>
+</body>
+</html>
