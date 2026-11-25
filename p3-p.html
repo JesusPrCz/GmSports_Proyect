@@ -1,7 +1,7 @@
  <!DOCTYPE html>
-<html
+<html>
 <head>
-  <meta charset="u-8">
+  <meta charset="utf-8">
   <title>Detalles del Producto - Nike</title>
   <style>
     body {
@@ -127,22 +127,22 @@
           <option value="27">27</option>
         </select>
         <label id="colorLabel" style="margin-right: 10px;">Color: Ninguno</label>
-        <label for="">Cantidad:</label>
-        <input type="" id="quantity" min="1" value="1">
+        <label for="quantity">Cantidad:</label>
+        <input type="number" id="quantity" min="1" value="1">
         <h3>Precio:  $2099</h3>
       </div>
       <button class="add-to-cart-button" id="addToCartButton">Añadir al Carrito</button>
       <a href="#" class="buy-button" id="buyButton">Comprar</a>
-      <a href="calzado.html" class="retired-button" id="retired-Button">Regresar</a>
+      < hr="" class="retired-button" id="retired-Button">Regresar</a>
     </div>
   </div>
 
   <script>
-    t selectedColor = 'Ninguno';
-    cont pricePerUnit = 2099;
+    let selectedColor = 'Ninguno';
+    const pricePerUnit = 2099;
 
     function showColor(color, bgColor, textColor, pageBgColor) {
-      .getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("colorLabel").innerText = "Color: " + color;
       document.getElementById("details").style.backgroundColor = bgColor; // Cambia el color de fondo del cuadro al color del producto
       document.getElementById("details").style.color = textColor; // Cambia el color del texto
       document.body.style.backgroundColor = pageBgColor; // Cambia el color de fondo de la página
@@ -184,7 +184,7 @@
       };
 
       // Obtener el carrito del localStorage o inicializarlo
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let  = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push(product); // Añadir el producto al carrito
 
       // Guardar el carrito actualizado en localStorage
@@ -202,7 +202,7 @@
       const nombreDelProducto = "Nike Court Vision Alta"; /*[cite: 11] */
       const quantity = document.getElementById('quantity').value;
       const total = quantity * pricePerUnit;
-      const size = document.getElementById('size').value;
+     
       
       const url = `metodo de pago.html?producto=${encodeURIComponent(nombreDelProducto)}&total=${total}&size=${size}&color=${selectedColor}&quantity=${quantity}`;
       window.location.href = url;

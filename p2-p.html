@@ -167,7 +167,10 @@
       document.getElementById("details").style.color = textColor; // Mantiene el color del texto
     }
 
-    
+    document.getElementById('addToCartButton').onclick = function() {
+      const quantity = document.getElementById('quantity').value;
+      const size = document.getElementById('size').value;
+      const total = quantity * pricePerUnit;
 
       // Crear un objeto del producto
       const product = {

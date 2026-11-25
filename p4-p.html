@@ -141,7 +141,11 @@
     let selectedColor = 'Ninguno';
     const pricePerUnit = 2686;
 
-    
+    function showColor(color, bgColor, textColor, pageBgColor) {
+      document.getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("details").style.backgroundColor = bgColor; // Cambia el color de fondo del cuadro al color del producto
+      document.getElementById("details").style.color = textColor; // Cambia el color del texto
+      document.body.style.backgroundColor = pageBgColor; // Cambia el color de fondo de la página
     }
 
     function clearColor() {
