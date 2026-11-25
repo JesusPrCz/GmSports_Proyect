@@ -140,7 +140,7 @@
       document.getElementById("details").style.color = textColor; 
     }
 
-    {
+    document.getElementById('addToCartButton').onclick = function(){
       const quantity = document.getElementById('quantity').value;
       const size = document.getElementById('size').value;
       const total = quantity * pricePerUnit;

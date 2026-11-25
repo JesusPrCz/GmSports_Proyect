@@ -164,7 +164,13 @@
         "Subtotal: $" + total);
     };
 
-    
+document.getElementById('buyButton').onclick = function() {
+      const nombreDelProducto = "Playera Deportiva con Manga";
+      const quantity = document.getElementById('quantity').value;
+      const total = quantity * pricePerUnit;
+      const size = document.getElementById('size').value;
+      const url = `metodo de pago.html?producto=${encodeURIComponent(nombreDelProducto)}&total=${total}&size=${size}&color=${selectedColor}&quantity=${quantity}`;
+      window.location.href = url;    
     };
   </script>
 </body>
