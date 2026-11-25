@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Detalles del Producto</title>
+  <style>
+    body {
+      background-color: #813737;
+      color: #086d17e7;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      transition: background-color 0.3s;
+    }
+    .product-container {
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      padding: 40px 20px;
+    }
+    .product-image {
+      display: flex; 
+      justify-content: center; 
+      margin-bottom: 20px;
+    }
+    .product-image img {
+      max-width: 200px; 
+      height: auto; 
+      margin: 0 10px; 
+      cursor: pointer; 
+      transition: transform 0.3s;
+    }
+    .product-image img:hover {
+      transform: scale(1.05);
+    }
+    .product-details {
+      background-color: #829c30b0; 
+      color: #2c2c2c; 
+      padding: 30px; 
+      border-radius: 10px; 
+      width: 80%; 
+      max-width: 600px; 
+      text-align: center; 
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .product-name {
+      font-size: 24px; 
+      font-weight: bold; 
+      margin-bottom: 10px;
+    }
+    .product-description {
+      margin-bottom: 20px;
+    }
+    .product-options {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      margin-bottom: 20px;
+    }
+    .product-options label {
+      margin-right: 10px;
+    }
+    .product-options input[type="number"], .product-options select {
+      width: 100px; 
+      padding: 8px 12px; 
+      border: 1px solid #ccc; 
+      border-radius: 5px; 
+      font-size: 14px; 
+      margin: 0 10px;
+    }
+    .buy-button, .add-to-cart-button, .retired-button {
+      display: inline-block; 
+      background-color: #65613d; 
+      color: #faefef; 
+      padding: 12px 24px; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      font-size: 16px; 
+      transition: background-color 0.3s; 
+      margin-top: 10px;
+    }
+    .buy-button:hover, .add-to-cart-button:hover {
+      background-color: #4b8f45;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <div class="product-image">
+      <img src="img/p11.jpg" alt="Producto 1" onmouseover="showColor('Vino', '#FFC0CB', '#000', '#00CED1', '#FFC0CB')" onmouseout="clearColor()" onclick="selectColor('Vino', '#FFC0CB', '#000')">
+      <img src="img/p12.jpg" alt="Producto 2" onmouseover="showColor('Azul Marino', '#000000', '#fff', '#00868B', '#000000')" onmouseout="clearColor()" onclick="selectColor('Azul Marino', '#000000', '#fff')">
+    </div>
+    <div class="product-details" id="details">
+      <div class="product-name">Playera Deportiva Strike</div>
+      <div class="product-description">Playera de futbol con mangas cortas Dri-Fit para hombre.</div>
+      <div class="product-options">
+        <label for="size">Talla:</label>
+        <select id="size">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+        </select>
+        <label for="quantity">Cantidad:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <h3>Precio: $854</h3>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <label id="colorLabel" style="margin-right: 10px;">Color: Ninguno</label>
+      </div>
+      <button class="add-to-cart-button" id="addToCartButton">Añadir al Carrito</button>
+      <a href="#" class="buy-button" id="buyButton">Comprar</a>
+      <a href="playeraD.html" class="retired-button" id="retired-Button">Regresar</a>
+    </div>
+  </div>
+
+  <script>
+    let selectedColor = 'Ninguno';
+    const pricePerUnit = 854;
+
+    function showColor(color, bgColor, textColor, pageBgColor, productBgColor) {
+      document.getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("details").style.backgroundColor = productBgColor;
+      document.getElementById("details").style.color = textColor;
+      document.body.style.backgroundColor = pageBgColor;
+    }
+
+    function clearColor() {
+      if (selectedColor === 'Ninguno') {
+        document.getElementById("colorLabel").innerText = "Color: Ninguno";
+        document.getElementById("details").style.backgroundColor = '#d63ee4e7';
+        document.getElementById("details").style.color = '#333';
+        document.body.style.backgroundColor = '#f5b746';
+      } else {
+        document.getElementById("details").style.backgroundColor = selectedBackgroundColor;
+        document.getElementById("details").style.color = selectedTextColor;
+      }
+    }
+
+    function selectColor(color, bgColor, textColor) {
+      selectedColor = color;
+      selectedBackgroundColor = bgColor;
+      selectedTextColor = textColor;
+      document.getElementById("colorLabel").innerText = "Color: " + color;
+      document.getElementById("details").style.backgroundColor = bgColor;
+      document.getElementById("details").style.color = textColor;
+    }
+
+    document.getElementById('addToCartButton').onclick = function() {
+      const quantity = document.getElementById('quantity').value;
+      const size = document.getElementById('size').value;
+      const total = quantity * pricePerUnit;
+
+      const product = {
+        name: "Playera Deportiva Strike",
+        size: size,
+        color: selectedColor,
+        quantity: parseInt(quantity),
+        subtotal: total
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert("Producto añadido al carrito: " + 
+            "Nombre: Playera Deportiva Strike, " + 
+            "Talla: " + size + ", " + 
+            "Color: " + selectedColor + ", " + 
+            "Cantidad: " + quantity + ", " + 
+            "Subtotal: $" + total);
+    };
+
+    document.getElementById('buyButton').onclick = function() {
+      const nombreDelProducto = "Playera Deportiva Strike";
+      const quantity = document.getElementById('quantity').value;
+      const total = quantity * pricePerUnit;
+      const size = document.getElementById('size').value;
+      
+      const url = `metodo de pago.html?producto=${encodeURIComponent(nombreDelProducto)}&total=${total}&size=${size}&color=${selectedColor}&quantity=${quantity}`;
+      window.location.href = url;
+    };
+  </script>
+</body>
+</html>

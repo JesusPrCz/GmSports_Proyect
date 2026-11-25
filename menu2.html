@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Menu</title>
+  <style type="text/css">
+      /* Estilos generales */
+      * {
+          padding: 0;
+          margin: 0;
+      }
+
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          transition: background-color 0.3s; /* Transición suave para el cambio de fondo */
+          background-color: #e1e2ee; /* Color de fondo inicial */
+      }
+
+      /* Estilo del menú vertical */
+      .sidebar {
+          width: 180px; /* Ancho de la barra lateral */
+          position: fixed; /* Fijo a la izquierda */
+          height: 100%; /* Altura completa */
+          background-color: #2c3e50; /* Color de fondo oscuro */
+          padding: 20px; /* Espaciado interno */
+          color: #ecf0f1; /* Color del texto claro */
+           border: 4px solid #0b4eb1de;
+           
+      }
+
+      .sidebar ul {
+          list-style-type: none; /* Sin viñetas */
+          padding: 0; /* Sin padding */
+      }
+
+      .sidebar li {
+          margin: 10px 0; /* Espaciado entre elementos */
+      }
+
+      .sidebar a {
+          color: #ecf0f1; /* Color del texto claro */
+          text-decoration: none; /* Sin subrayado */
+          display: block; /* Para que el área de clic sea toda la celda */
+          padding: 10px; /* Espaciado interno */
+          border: 2px solid #085ad6de;
+      }
+
+      .sidebar a:hover {
+          background-color: #34495e; /* Color de fondo al pasar el mouse */
+          
+      }
+
+      .sidebar ul ul {
+          display: none; /* Ocultar submenús por defecto */
+          padding-left: 20px; /* Indentación para submenús */
+      }
+
+      .sidebar li:hover > ul {
+          display: block; /* Mostrar submenú al pasar el mouse */
+      }
+
+      /* Estilo de la lista de productos */
+      .product-list {
+          display: grid; /* Cambiar a grid para 3 columnas */
+          grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+          gap: 20px; /* Espacio entre productos */
+          padding: 20px;
+          margin-left: 220px; /* Deja espacio para la barra lateral */
+          margin-top: 20px; /* Espacio superior para separación del menú */
+      }
+
+      .product-item {
+          text-align: center;
+          text-decoration: none;
+          color: #e2f5ef; /* Color de texto más oscuro */
+          border: 3px solid #090b0cde; /* Borde alrededor del producto */
+          border-radius: 5px; /* Bordes redondeados */
+          overflow: hidden; /* Para evitar que las imágenes se salgan */
+          background-color: #422b2b; /* Color de fondo blanco */
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+          transition: transform 0.2s; /* Transición suave al hacer hover */
+      }
+
+      .product-item:hover {
+          transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+      }
+
+      .product-item img {
+          width: 100%;
+          height: 300px; /* Altura fija para las imágenes */
+          object-fit: cover; /* Mantiene la proporción de la imagen */
+      }
+
+      /* Estilo del texto NOVEDADES */
+      .novedades {
+          text-align: center;
+          font-size: 30px; /* Tamaño de fuente ajustado */
+          color: #2c3e50; /* Color de texto oscuro */
+          margin: 20px auto; /* Centrar y reducir el margen */
+          max-width: 600px; /* Máximo ancho para el título */
+      }
+
+      p {
+          font-family: Helvetica;
+          font-size: 20px;
+          font-weight: bold;
+          font-style: italic;
+          background-color: #f39d1c; /* Color de fondo elegante */
+          border-style: solid;
+          border-color: #020201; /* Color del borde */
+          border-width: 5px;
+          margin: 14px auto; /* Centrar y reducir el margen */
+          padding: 20px;
+          border-radius: 14px;
+          max-width: 300px; /* Máximo ancho para el párrafo */
+          color: #ffffff; /* Color de texto blanco */
+      }
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+      <ul>
+          <li>
+              <a href="perfil.php" onmouseover="cambiarFondo('Lpinkight')" onmouseout="resetFondo()">Perfil</a>
+              <ul>
+                  <li><a href="confi.html" onmouseover="cambiarFondo('Lavender')" onmouseout="resetFondo()">Configuracion</a></li>
+                  <li><a href="" onmouseover="cambiarFondo('Sky Blue')" onmouseout="resetFondo()">Privacidad</a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="inf.html" onmouseover="cambiarFondo('Yellow')" onmouseout="resetFondo()">Informacion</a>
+          </li>
+          <li>
+              <a href="" onmouseover="cambiarFondo('lightgreen')" onmouseout="resetFondo()">Productos</a>
+              <ul>
+                  <li><a href="calzado.html" onmouseover="cambiarFondo('AliceBlue')" onmouseout="resetFondo()">Calzado</a></li>
+                  <li><a href="otroProducto.html" onmouseover="cambiarFondo('Aqua')" onmouseout="resetFondo()">Playeras Deportivas Femeninas</a></li>
+                  <li><a href="playeraD.html" onmouseover="cambiarFondo('BlanchedAlmond')" onmouseout="resetFondo()">Playeras Deportivas Masculinas</a></li>
+              </ul>
+          </li>
+          <li>
+              <a href="carrito.html" onmouseover="cambiarFondo('Burlywood')" onmouseout="resetFondo()">Carrito</a>
+              <ul>
+                  <li><a href="metodo de pago.html" onmouseover="cambiarFondo('Chartreuse')" onmouseout="resetFondo()">Metodo de pago</a></li>
+              </ul>
+          </li>
+          
+          <li>
+              <a href="php/quejas-tienda.php" onmouseover="cambiarFondo('gray')" onmouseout="resetFondo()">Quejas-tienda</a>
+              <ul>
+                  <li><a href="php/quejas-distribuidor.php" onmouseover="cambiarFondo('Chocolate')" onmouseout="resetFondo()">Quejas-distribuidor</a></li>
+                  <li><a href="php/devolucion.php" onmouseover="cambiarFondo('Cream')" onmouseout="resetFondo()">Devolucion</a></li>
+              </ul>
+          </li>
+          
+          <li>
+              <a href="form.html" onmouseover="cambiarFondo('Light Salmon')" onmouseout="resetFondo()">Formulario</a>
+          </li>
+          <li>
+              <a href="Boletin_suscripcion.html" onmouseover="cambiarFondo('Pale Turquoise')" onmouseout="resetFondo()">Suscribete a nuestra pagina</a>
+          </li>
+          
+          <!-- Enlace de cerrar sesión estilizado -->
+          <li>
+              <a href="cerrar-sesion.php" onmouseover="cambiarFondo('Honeydew')" onmouseout="resetFondo()">Cerrar sesion</a>
+          </li>
+      </ul>
+  </div>
+
+  <p class="novedades">NOVEDADES</p>
+
+  <div class="product-list">
+      <a href="p1-p.html" class="product-item">
+          <img src="img/z1.avif" alt="Producto 1">
+          <h3>Zapatillas Nike Air Force 1</h3>
+      </a>
+      <a href="articulo1.html" class="product-item">
+          <img src="img/s1.jpg" alt="Producto 2">
+          <h3>Top Deportivo</h3>
+      </a>
+      <a href="a1.html" class="product-item">
+          <img src="img/p1.jpg" alt="Producto 3">
+          <h3>Playera Deportiva Nike Pro</h3>
+      </a>
+      <a href="p2-p.html" class="product-item">
+          <img src="img/z21.avif" alt="Producto 4">
+          <h3>Zapatillas Nike G.T. Hustle 3</h3>
+      </a>
+      <a href="articulo2.html" class="product-item">
+          <img src="img/s3.jpg" alt="Producto 5">
+          <h3>Sujetador Deportivo</h3>
+      </a>
+      <a href="a2.html" class="product-item">
+          <img src="img/p2.jpg" alt="Producto 6">
+          <h3>Playera Deportiva Pro Training</h3>
+      </a>
+  </div>
+
+  <script type="text/javascript">
+      function cambiarFondo(color) {
+          document.body.style.backgroundColor = color;
+      }
+
+      function resetFondo() {
+          document.body.style.backgroundColor = '#39771c'; // Color de fondo original
+      }
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdd03e;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .settings-container {
+            max-width: 600px;
+            margin: auto;
+            background: rgb(238, 121, 121);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="password"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #94f58e;
+            border-radius: 4px;
+        }
+
+        .save-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #0056b3;
+        }
+
+        .boton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="settings-container">
+        <h1>Configuración de Usuario</h1>
+        
+        <form id="form-config" action="php/cambiar_password.php" method="POST">
+            
+            <div class="form-group">
+                <label for="pass_actual">Contraseña Actual:</label>
+                <input type="password" id="pass_actual" name="pass_actual" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Nueva Contraseña:</label>
+                <input type="password" id="password" name="pass_nueva" minlength="6" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pass_confirmar">Confirmar Nueva Contraseña:</label>
+                <input type="password" id="pass_confirmar" name="pass_confirmar" required>
+            </div>
+
+            <div class="form-group">
+                <label for="notifications">Notificaciones:</label>
+                <select id="notifications" name="notifications">
+                    <option value="enabled">Habilitadas</option>
+                    <option value="disabled">Deshabilitadas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region">
+                    <option value="mx">Mexico</option>
+                    <option value="us">Estados Unidos</option>
+                    <option value="de">Alemania</option>
+                    <option value="id">Indonesia</option>
+                    <option value="jp">Japon</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Idioma:</label>
+                <select id="language" name="language">
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                    <option value="fr">Francés</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unidad">Unidades de medida:</label>
+                <select id="unidad" name="unidad">
+                    <option value="an">Anglosajon (ft, in, mi, lb)</option>
+                    <option value="me">Métrico (m, cm, km, kg)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="save-button">Guardar Cambios</button>
+            <p id="mensaje-pass" style="margin-top: 10px; font-weight: bold; text-align: center;"></p>
+
+            <br>
+            <div class="botones-container">
+                <button type="button" class="boton" onclick="continuarcompra()">Continuar compra</button>
+            </div>
+            <br>
+
+        </form>
+    </div>
+
+    <script>
+        function continuarcompra() {
+            window.location.href = 'menu2.html';
+        }
+
+        
+
+            if (passNueva !== passConfirmar) {
+                e.preventDefault();
+                mensajePass.style.color = "white";
+                mensajePass.textContent = "Las nuevas contraseñas no coinciden.";
+            }
+        });
+    </script>
+
+</body>
+</html>

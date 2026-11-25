@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informacion de la Tienda - Nike</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s; /* Transición suave para el fondo */
+        }
+        .container {
+            max-width: 800px; /* Ancho máximo del contenedor */
+            margin: 0 auto; /* Centra el contenedor horizontalmente */
+            padding: 20px;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+            background-color: #d446ff;
+            border-style: solid;
+            border-color: #d6fc67;
+            border-width: 8px;
+            margin: 14px auto; /* Margen vertical y centrado horizontal */
+            padding: 20px;
+            border-radius: 14px;
+        }
+        .header {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s; /* Transición suave para el cambio de color */
+        }
+        .header:hover {
+            background-color: green; /* Cambia a verde al pasar el mouse */
+        }
+        .store-info {
+            margin-top: 40px;
+        }
+        .comparison-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s; /* Transición suave para el cambio de color */
+        }
+        .comparison-box:hover {
+            background-color: yellow; /* Cambia el fondo del cuadro a amarillo al pasar el mouse */
+        }
+        .comparison-box h3 {
+            margin-top: 0;
+            color: black; /* Asegura que el título esté en negro */
+        }
+        .mission,
+        .vision {
+            flex-basis: 45%;
+            color: black; /* Asegura que el texto esté en negro */
+        }
+        .objectives {
+            margin-top: 40px;
+        }
+        .objectives ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+            .boton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" onmouseover="changeBackgroundColor('skyblue')" onmouseout="resetBackgroundColor()">
+        <h1>Informacion de la Tienda - Nike</h1>
+    </div>
+    <div class="store-info">
+        <p>Nike es una empresa multinacional estadounidense dedicada al diseno, desarrollo, fabricacion y comercializacion de equipamiento deportivo. Fundada en 1964, Nike es uno de los principales fabricantes de calzado, ropa y accesorios deportivos del mundo.</p>
+        <p>La compania se caracteriza por su innovacion en el diseno y la tecnologia aplicada a sus productos, asi como por su fuerte presencia en el mercado global a traves de sus tiendas y distribuidores.</p>
+    </div>
+    <div class="comparison-box">
+        <div class="mission" onmouseover="highlightSection(this, 'red')" onmouseout="highlightSection(this, '#fff')">
+            <h3>Mision</h3>
+            <p>Llevar inspiracion y innovacion a cada atleta del mundo, independientemente de su nivel de habilidad. Nuestra mision es empoderar a los atletas a alcanzar sus maximos potenciales y a superar sus propios limites a traves de nuestros productos y servicios de clase mundial.</p>
+        </div>
+        <div class="vision" onmouseover="highlightSection(this, 'red')" onmouseout="highlightSection(this, '#fff')">
+            <h3>Vision</h3>
+            <p>Ser la marca deportiva mas deseada y respetada del mundo, reconocida por su liderazgo en innovacion, sostenibilidad y responsabilidad social. Queremos ser la eleccion preferida de los atletas y consumidores en todo el mundo, convirtiendonos en una fuerza positiva que inspira a las personas a alcanzar sus suenos.</p>
+        </div>
+    </div>
+    <div class="objectives">
+        <h3>Objetivos</h3>
+        <ul>
+            <li>Mantener un liderazgo en innovacion tecnologica y diseno de productos deportivos de vanguardia.</li>
+            <li>Expandir nuestra presencia global y fortalecer nuestra posicion en mercados clave.</li>
+            <li>Promover la sostenibilidad y practicas responsables en toda nuestra cadena de valor.</li>
+            <li>Fomentar una cultura corporativa de excelencia, diversidad e inclusion.</li>
+            <li>Contribuir al desarrollo y bienestar de las comunidades donde operamos.</li>
+        </ul>
+    </div>
+    <button class="boton" onclick="window.location.href= 'menu2.html'">Regresar</button>
+</div>
+<script>
+    function highlightSection(element, color) {
+        element.style.backgroundColor = color; // Cambia el color de fondo de la sección
+    }
+
+    function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color; // Cambia el color de fondo al pasar el mouse sobre el título
+    }
+
+    function resetBackgroundColor() {
+        document.body.style.backgroundColor = '#f0f0f0'; // Vuelve al color original
+    }
+</script>
+</body>
+</html>

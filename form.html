@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Tienda Nike</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffbb83; /* Fondo suave */
+        }
+        h1 {
+            text-align: center;
+            color: #333; /* Color del título */
+            margin-top: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #9bbdfc; /* Color para el contenedor del formulario */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #222; /* Color de letra más oscuro */
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s; /* Transición suave para el borde */
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50; /* Color del borde al enfocar */
+            outline: none; /* Sin contorno */
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .checkbox-group label,
+        .radio-group label {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s; /* Transición suave para el botón */
+        }
+        button:hover {
+            background-color: #45a049; /* Color al pasar el ratón */
+        }
+        section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #caffca; /* Fondo azul claro para la sección de recomendaciones */
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form action="php/guardar.php" method="post">
+        <h1>Tienda Nike</h1>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="name" name="nombre" required>
+
+        <label for="email">Correo:</label>
+        <input type="email" id="email" name="correo" required>
+
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="phone" name="telefono" required>
+        <div class="container">
+<section id="pregunta1">
+        <label>1.-¿Cómo conociste nuestra página?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="how-found[]" value="social-media"> Redes sociales</label>
+            <label><input type="checkbox" name="how-found[]" value="internet-search"> Búsqueda por internet</label>
+            <label><input type="checkbox" name="how-found[]" value="recommendation"> Recomendación</label>
+        </div>
+</section>
+
+<section id="pregunta2">
+        <label>2.-¿Qué productos nuevos te gustaría que implementáramos?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="productosnuevos" value="shirts"> Playeras</label>
+            <label><input type="radio" name="productosnuevos" value="pants"> Pantalones</label>
+            <label><input type="radio" name="productosnuevos" value="accessories"> Accesorios</label>
+            <label><input type="radio" name="productosnuevos" value="other"> Otros</label>
+        </div>
+</section>
+
+<section id="pregunta3">
+        <label>3.-¿Con qué frecuencia compras productos de Tiendas en línea?</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="frecuencia[]" value="months"> Mensualmente</label>
+            <label><input type="checkbox" name="frecuencia[]" value="3-month"> Cada 3 meses</label>
+            <label><input type="checkbox" name="frecuencia[]" value="6-month"> cada 6 meses</label>
+            <label><input type="checkbox" name="frecuencia[]" value="raro"> Rara vez</label>
+        </div>
+</section>
+
+<section id="pregunta4">
+        <label>4.-¿Cuál es tu método de pago preferido?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="pago" value="tarjeta"> Tarjeta de crédito</label>
+            <label><input type="radio" name="pago" value="paypal"> Paypal</label>
+            <label><input type="radio" name="pago" value="efectivo"> Efectivo</label>
+            <label><input type="radio" name="pago" value="otro"> Otros</label>
+        </div>
+</section>
+
+<section id="pregunta5">
+        <label for="comments">5.-¿Tienes alguna pregunta o comentario específico?</label>
+        <textarea id="comments" name="comentario" rows="3"></textarea>
+</section>
+
+<section id="pregunta6">
+        <label for="rating">6.-¿Cómo calificarías tu experiencia en nuestra página?</label>
+        <select id="rating" name="calificacion">
+            <option value="">Selecciona una opción</option>
+            <option value="excellent">Excelente</option>
+            <option value="good">Buena</option>
+            <option value="regular">Regular</option>
+</select>
+
+<section id="pregunta7">
+        <label for="suggestions">7.-¿Consideras que debemos mejorar la gestión de la página?</label>
+        <textarea id="suggestions" name="gestion" rows="3"></textarea>
+</section>
+
+<section id="pregunta8">
+        <label for="damaged-item">8.-Si algún artículo llegó en mal estado, puedes anexarlo aquí:</label>
+        <input type="file" id="damaged-item" name="damaged-item">
+</section>
+        <button type="submit" name="submit">Enviar</button>
+        <a href="menu2.html" class="regresar-button">Regresar al Menú</a>
+        </div>
+    </form>
+
+    <section>
+        <h2>Recomendaciones de la Tienda Nike</h2>
+        <p>Bienvenido a la Tienda Nike, donde ofrecemos una amplia gama de productos deportivos de alta calidad. Nuestro objetivo es brindarte la mejor experiencia de compra y satisfacer tus necesidades. A través de este formulario, queremos conocer tu opinión y sugerencias para mejorar continuamente nuestros servicios y productos. Tu retroalimentación es muy valiosa para nosotros.</p>
+        <p>Agradecemos tu tiempo y confianza en nuestra marca. Estamos comprometidos a ofrecerte productos innovadores y un excelente servicio al cliente.</p>
+    </section>
+</body>
+</html>
